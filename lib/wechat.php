@@ -47,11 +47,11 @@ class WechatCallback
         exit;
     }
 
-    private function defaultReply($postObj, $content = null){
+    private function defaultReply($postObj){
 
     	$fromUsername = $postObj->FromUserName;
 		$toUsername = $postObj->ToUserName;
-
+		$keyword = trim($postObj->Content);
     	$template = "<xml>
 			<ToUserName><![CDATA[%s]]></ToUserName>
 			<FromUserName><![CDATA[%s]]></FromUserName>
@@ -63,6 +63,18 @@ class WechatCallback
 
 		$msgType = 'text';
 
+		$url = 'http://www.tuling123.com/openapi/api';
+
+		$appkey = 'db57fd447f1e949f061fdadba6a1ad4d';
+
+		$response = url_request($url, 'POST', array('key' => $appkey, 'info' => $keyword, 'userid' => $fromUsername));
+
+		$content = null;
+
+		if(!empty($response)){
+			$response = json_decode($response);
+			$content = $response->text;			
+		}
 
 		$content = empty($content) ? '你好！' : $content;
 
