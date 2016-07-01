@@ -35,6 +35,8 @@ class mod_turing{
 					$source = $news->source;
 					$icon = $news->icon;
 					$url = $news->url;
+					if(empty($title))
+						continue;
 					$newslist .= '<item>
 								<Title><![CDATA['.$title.']]></Title> 
 								<Description><![CDATA['.$source.']]></Description>
