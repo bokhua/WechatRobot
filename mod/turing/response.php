@@ -57,9 +57,9 @@ class mod_turing{
 				}
 				$content = $response->text.PHP_EOL;
 				$content .= WechatReponse::renderNews($fromUsername, $toUsername, $newslist);
+				$content = $response->text.PHP_EOL.WechatReponse::renderText($fromUsername, $toUsername, $value->name.PHP_EOL.$value->info.PHP_EOL.$value->detailurl);
 			}
 		}
-
 		echo $content;
 	}
 }
