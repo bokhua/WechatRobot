@@ -18,19 +18,7 @@ class mod_currency
 
 		$content = $this->checkCurrency($pair);
 
-    	$template = "<xml>
-			<ToUserName><![CDATA[%s]]></ToUserName>
-			<FromUserName><![CDATA[%s]]></FromUserName>
-			<CreateTime>%s</CreateTime>
-			<MsgType><![CDATA[%s]]></MsgType>
-			<Content><![CDATA[%s]]></Content>
-			<FuncFlag>0</FuncFlag>
-			</xml>";
-		$msgType = 'text';
-
-		$out = sprintf($template, $fromUsername, $toUsername, time(), $msgType, $content);
-
-		echo $out; 
+		echo WechatReponse::renderText($fromUsername, $toUsername, $content);
 	}
 
 	private function checkCurrency($pair = array()){

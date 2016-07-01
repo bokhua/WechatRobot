@@ -25,18 +25,6 @@ class mod_translate
 		if($zh['trans_result'][0]['src'] != $zh['trans_result'][0]['dst'])
 			$content = $zh['trans_result'][0]['dst'];
 
-    	$template = "<xml>
-			<ToUserName><![CDATA[%s]]></ToUserName>
-			<FromUserName><![CDATA[%s]]></FromUserName>
-			<CreateTime>%s</CreateTime>
-			<MsgType><![CDATA[%s]]></MsgType>
-			<Content><![CDATA[%s]]></Content>
-			<FuncFlag>0</FuncFlag>
-			</xml>";
-		$msgType = 'text';
-
-		$out = sprintf($template, $fromUsername, $toUsername, time(), $msgType, $content);
-
-		echo $out; 
+		echo WechatReponse::renderText($fromUsername, $toUsername, $content);
 	}
 }
