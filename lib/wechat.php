@@ -22,7 +22,6 @@ class WechatReponse{
 				<Title><![CDATA['.$title.']]></Title>
 				<Description><![CDATA['.$desc.']]></Description>
 				<Url><![CDATA['.$url.']]></Url>
-				<MsgId>'.time().'</MsgId>
 				</xml>';//<MsgId>1234567890123456</MsgId>
 	}
 
