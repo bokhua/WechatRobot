@@ -30,7 +30,8 @@ function get_request_mod($keyword){
 	foreach ($mods as $mod) {
 		$keywords = $mod->keywords;
 		foreach ($keywords as $key) {
-			if(substr( strtolower($keyword), 0, strlen($key) ) == $key)
+
+			if(substr($keyword , 0, strlen($key)) == $key || substr(strtolower($keyword) , 0, strlen($key)) == $key)
 				return $mod->name;
 		}
 	}
@@ -50,7 +51,7 @@ function get_request_param($modname, $keyword){
 			$keywords = $mod->keywords;
 
 			foreach ($keywords as $key) {
-				if(substr( strtolower($keyword), 0, strlen($key) ) == $key)
+				if(substr($keyword, 0, strlen($key) ) == $key || substr( strtolower($keyword), 0, strlen($key) ) == $key)
 					return substr($keyword, strlen($key));
 			}
 		}
