@@ -1,7 +1,7 @@
 <?php
 
 class WechatReponse{
-	
+
 	static function renderText($touser, $fromuser, $content = null){
 		return '<xml>
 				<ToUserName><![CDATA['.$touser.']]></ToUserName>
@@ -50,7 +50,7 @@ class WechatReponse{
 	}
 }
 
-class WetchatNews{
+class WechatNews{
     public $title, $desc, $icon, $url;
     function __construct($Title, $Desc, $Icon, $Url){
         $this->title = $Title;
