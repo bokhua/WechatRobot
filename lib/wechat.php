@@ -50,7 +50,7 @@ class WechatReponse{
 	}
 }
 
-class WechatNews{
+class WechatReponseNews{
     public $title, $desc, $icon, $url;
     function __construct($Title, $Desc, $Icon, $Url){
         $this->title = $Title;
@@ -59,6 +59,7 @@ class WechatNews{
         $this->url = $Url;
     }
 }
+
 class WechatCallback
 {
 	public function valid()

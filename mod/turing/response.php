@@ -33,7 +33,7 @@ class mod_turing{
 					$desc = $news->source;
 					$icon = $news->icon;
 					$url = $news->detailurl;
-					$newslist[] = new WechatNews($title, $desc, $icon, $url);
+					$newslist[] = new WechatReponseNews($title, $desc, $icon, $url);
 				}
 
 				$content = WechatReponse::renderNews($fromUsername, $toUsername, $newslist);
@@ -41,6 +41,10 @@ class mod_turing{
 
 			if($response->code == 100000){
 				$content = WechatReponse::renderText($fromUsername, $toUsername, $response->text);
+			}
+
+			if($response->code == 200000){
+				$content = WechatReponse::renderLink($fromUsername, $toUsername, $response->text, null, $response->url);
 			}
 		}
 
