@@ -46,6 +46,17 @@ class mod_turing{
 			if($response->code == 200000){
 				$content = WechatReponse::renderText($fromUsername, $toUsername, $response->text.PHP_EOL.$response->url);
 			}
+
+			if($response->code == 308000){
+				
+				$newslist = array();
+
+				foreach ($response->list as $value) {
+					$newslist[] = new WechatReponseNews($value->name, $value->info, $vaue->icon, $value->detailurl);
+				}
+				$content = $response->text.PHP_EOL;
+				$content .= WechatReponse::renderText($fromUsername, $toUsername, $response->text.PHP_EOL.$response->url);
+			}
 		}
 
 		echo $content;
