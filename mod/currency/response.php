@@ -2,15 +2,16 @@
 
 class mod_currency
 {
-	function __construct(){
-
+	protected $postObj;
+	
+	function __construct($PostObj){
+		$this->postObj = $PostObj;
 	}
 
-	function reply($postObj){
+	function reply(){
 		
-		$fromUsername = $postObj->FromUserName;
-		$toUsername = $postObj->ToUserName;
-		$keyword = trim($postObj->Content);
+		$fromUsername = $this->postObj->FromUserName;
+		$toUsername = $this->$postObj->ToUserName;
 
 		$pair = array('"CNYSGD"', '"SGDCNY"');
 
