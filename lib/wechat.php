@@ -12,7 +12,7 @@ class WechatReponse{
 				</xml>';//<MsgId>1234567890123456</MsgId>
 	}
 
-	static function renderLink($touser, $fromuser, $title = null, $desc = null, $url){
+	static function renderLink($touser, $fromuser, $title, $desc, $url){
 		return '<xml>
 				<ToUserName><![CDATA['.$touser.']]></ToUserName>
 				<FromUserName><![CDATA['.$fromuser.']]></FromUserName> 
