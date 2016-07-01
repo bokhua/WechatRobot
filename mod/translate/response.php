@@ -1,5 +1,5 @@
 <?php
-
+require_once($CFG->dirroot.'/mod/translate/lib.php');
 class mod_translate
 {
 	protected $postObj;
@@ -9,9 +9,6 @@ class mod_translate
 	}
 
 	function reply(){
-		
-		require_once(dir(__FILE__).'/lib.php');
-		
 		$fromUsername = $this->postObj->FromUserName;
 		$toUsername = $this->postObj->ToUserName;
 		$keyword = trim($postObj->Content);
