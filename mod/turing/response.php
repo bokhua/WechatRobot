@@ -32,7 +32,7 @@ class mod_turing{
 					$title = $news->article;
 					$desc = $news->source;
 					$icon = $news->icon;
-					$url = $news->url;
+					$url = $news->detailurl;
 					$newslist[] = new WechatNews($title, $desc, $icon, $url);
 				}
 
