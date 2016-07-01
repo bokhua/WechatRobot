@@ -1,11 +1,11 @@
 <?php
 
-function url_request($url, $method = 'GET', $data = null){
+function url_request($url, $method = 'GET', $data = array()){
 	
 	$response = null;
 
 	if($method == 'GET'){
-		if($data == null){
+		if(count($data) == 0){
 			$call = curl_init();
 			curl_setopt_array($call, array(
 					CURLOPT_RETURNTRANSFER => 1,
