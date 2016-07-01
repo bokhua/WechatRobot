@@ -18,6 +18,8 @@ class mod_translate
 		$en = translate($query, 'auto', 'en');
 		$zh = translate($query, 'auto', 'zh');
 
+		$content = 'not result matched for '.$query;
+
 		if($en['trans_result'][0]['src'] != $en['trans_result'][0]['dst'])
 			$content = $en['trans_result'][0]['dst'];
 		if($zh['trans_result'][0]['src'] != $zh['trans_result'][0]['dst'])
