@@ -131,3 +131,62 @@ class Helper
 		return $result;
 	}
 }
+
+class WechatReponse{
+	static function renderText($touser, $fromuser, $content = null){
+		return '<xml>
+				<ToUserName><![CDATA['.$touser.']]></ToUserName>
+				<FromUserName><![CDATA['.$fromuser.']]></FromUserName> 
+				<CreateTime>'.time().'</CreateTime>
+				<MsgType><![CDATA[text]]></MsgType>
+				<Content><![CDATA['.$content.']]></Content>
+				</xml>';//<MsgId>1234567890123456</MsgId>
+	}
+
+	static function renderLink($touser, $fromuser, $title = null, $desc = null, $url){
+		return '<xml>
+				<ToUserName><![CDATA['.$touser.']]></ToUserName>
+				<FromUserName><![CDATA['.$fromuser.']]></FromUserName> 
+				<CreateTime>'.time().'</CreateTime>
+				<MsgType><![CDATA[link]]></MsgType>
+				<Title><![CDATA['.$title.']]></Title>
+				<Description><![CDATA['.$desc.']]></Description>
+				<Url><![CDATA['.$url.']]></Url>
+				</xml>';//<MsgId>1234567890123456</MsgId>
+	}
+
+	static function renderNews($touser, $fromuser, $newslist = array()){
+
+		$articles = '';
+		$cnt = 0;
+		foreach ($newslist as $news) {
+			if(!empty($news->title) && !empty($news->url)){
+				$articles .=   '<item>
+								<Title><![CDATA['.$news->title.']]></Title> 
+								<Description><![CDATA['.$news->desc.']]></Description>
+								<PicUrl><![CDATA['.$news->icon.']]></PicUrl>
+								<Url><![CDATA['.$news->url.']]></U->rl>
+								</item>';
+				$cnt++;
+			}
+		}
+		return '<xml>
+				<ToUserName><![CDATA['.$fromUsername.']]></ToUserName>
+				<FromUserName><![CDATA['.$toUsername.']]></FromUserName>
+				<CreateTime>'.time().'</CreateTime>
+				<MsgType><![CDATA[news]]></MsgType>
+				<ArticleCount>'.$cnt.'</ArticleCount>
+				<Articles>'.$articles.'</Articles>
+				</xml>';//<MsgId>1234567890123456</MsgId>
+	}
+}
+
+class WetchatNews{
+    public $title, $desc, $icon, $url;
+    function __construct($Title, $Desc, $Icon, $Url){
+        $this->title = $Title;
+        $this->desc = $Desc;
+        $this->icon = $Icon;
+        $this->url = $Url;
+    }
+}

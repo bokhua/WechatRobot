@@ -54,23 +54,13 @@ class mod_turing{
 							<ArticleCount>'.$cnt.'</ArticleCount>
 							<Articles>'.$newslist.'</Articles>
 							</xml> ';
-				echo $content;
-				exit;
-			}		
+			}
+
+			if($response->code == 100000){
+				$content = WechatReponse::renderText($fromUsername, $toUsername, $response->text);
+			}
 		}
 
-    	$template = "<xml>
-			<ToUserName><![CDATA[%s]]></ToUserName>
-			<FromUserName><![CDATA[%s]]></FromUserName>
-			<CreateTime>%s</CreateTime>
-			<MsgType><![CDATA[%s]]></MsgType>
-			<Content><![CDATA[%s]]></Content>
-			<FuncFlag>0</FuncFlag>
-			</xml>";
-		$msgType = 'text';
-
-		$out = sprintf($template, $fromUsername, $toUsername, time(), $msgType, $content);
-
-		echo $out; 
+		echo $content;
 	}
 }
