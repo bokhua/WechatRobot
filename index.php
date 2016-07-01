@@ -3,7 +3,6 @@
   * wechat php test
   */
 require_once('config.php');
-require_once('lib.php');
 //define your token
 
 $mode = 'listen';

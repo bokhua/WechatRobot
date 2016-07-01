@@ -10,3 +10,4 @@ require_once($CFG->dirroot.'/lib/dml/'.$dbclassname.'.php');
 
 $DB = new $dbclassname($CFG->dbhost, $CFG->dbport, $CFG->dbuser, $CFG->dbpass);
 
+require_once(dirname(__FILE__) . '/wechat.php');
