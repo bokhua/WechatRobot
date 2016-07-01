@@ -26,34 +26,17 @@ class mod_turing{
 
 
 			if($response->code == 302000){
-				$newslist = '';	
-				
-				$cnt = 0;
 
+				$newslist = array();
 				foreach ($response->list as $news) {
 					$title = $news->article;
-					$source = $news->source;
+					$desc = $news->source;
 					$icon = $news->icon;
 					$url = $news->url;
-					if(empty($title))
-						continue;
-					$newslist .= '<item>
-								<Title><![CDATA['.$title.']]></Title> 
-								<Description><![CDATA['.$source.']]></Description>
-								<PicUrl><![CDATA['.$icon.']]></PicUrl>
-								<Url><![CDATA['.$url.']]></Url>
-								</item>';
-					$cnt++;
+					$newslist[] = new WechatNews($title, $desc, $icon, $url);
 				}
 
-				$content = '<xml>
-							<ToUserName><![CDATA['.$fromUsername.']]></ToUserName>
-							<FromUserName><![CDATA['.$toUsername.']]></FromUserName>
-							<CreateTime>'.time().'</CreateTime>
-							<MsgType><![CDATA[news]]></MsgType>
-							<ArticleCount>'.$cnt.'</ArticleCount>
-							<Articles>'.$newslist.'</Articles>
-							</xml> ';
+				$content = WechatReponse::renderNews($fromUsername, $toUsername, $newslist);
 			}
 
 			if($response->code == 100000){
