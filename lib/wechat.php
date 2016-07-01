@@ -36,14 +36,14 @@ class WechatCallback
             	if(!empty($mod) && file_exists($modfile)){
             		$mod = new $modclassname($postObj);
             		$mod->reply();
-            		exit;
+            		exit(1);
             	}
             	
             }
         }
 
         $this->defaultReply($postObj);
-        exit;
+        exit(1);
     }
 
     private function defaultReply($postObj){
