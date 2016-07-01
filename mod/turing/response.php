@@ -44,7 +44,7 @@ class mod_turing{
 			}
 
 			if($response->code == 200000){
-				$content = WechatReponse::renderLink($fromUsername, $toUsername, 'good', 'this is my link', $response->url);
+				$content = WechatReponse::renderText($fromUsername, $toUsername, $response->text.PHP_EOL.$response->url);
 			}
 		}
 
