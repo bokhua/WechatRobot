@@ -1,5 +1,4 @@
 <?php
-require_once(dir(__FILE__).'/lib.php');
 
 class mod_translate
 {
@@ -10,6 +9,8 @@ class mod_translate
 	}
 
 	function reply(){
+		
+		require_once(dir(__FILE__).'/lib.php');
 		
 		$fromUsername = $this->postObj->FromUserName;
 		$toUsername = $this->postObj->ToUserName;
