@@ -1,9 +1,9 @@
 <?php
 
-require_once(dirname(__FILE__) . '/lib.php');
-require_once(dirname(__FILE__) . '/wechat.php');
+require_once($CFG->dirroot.'/lib/lib.php');
+require_once($CFG->dirroot.'/lib/wechat.php');
 
-global $CFG, $DB;
+$DB;
 
 //$dbclassname = $CFG->dbtype.'_database';
 
