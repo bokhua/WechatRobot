@@ -34,6 +34,7 @@ class WechatCallback
             	$modclassname = 'mod_'.$modname;
 
             	if(!empty($modname) && file_exists($modfile)){
+            		require_once($modfile);
             		$mod = new $modclassname($postObj);
             		$mod->reply();
             		exit;
