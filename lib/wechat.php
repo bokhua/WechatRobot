@@ -36,17 +36,17 @@ class WechatCallback
             	if(!empty($mod) && file_exists($modfile)){
             		$mod = new $modclassname($postObj);
             		$mod->reply();
-            		exit(1);
+            		exit;
             	}
             	
             }
         }
 
-        $this->defaultReply($postObj);
-        exit(1);
+        $this->defaultReply($postObj, $modname.'|'.$modfile.'|'.$modclassname);
+        exit;
     }
 
-    private function defaultReply($postObj){
+    private function defaultReply($postObj, $content = null){
 
     	$fromUsername = $postObj->FromUserName;
 		$toUsername = $postObj->ToUserName;
@@ -63,7 +63,7 @@ class WechatCallback
 		$msgType = 'text';
 
 
-		$content = '你好';
+		$content = empty($content) ? '你好！' : $content;
 
 		$out = sprintf($template, $fromUsername, $toUsername, time(), $msgType, $content);
 
