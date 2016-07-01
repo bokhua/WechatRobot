@@ -30,6 +30,7 @@ class WechatCallback
 			if(!empty( $keyword ))
             {
             	$modname = get_request_mod($keyword);
+            	$modname = empty($modname) ? 'turing' : $modname;
             	$modfile = $CFG->dirroot.'/mod/'.$modname.'/response.php';
             	$modclassname = 'mod_'.$modname;
 
@@ -63,20 +64,7 @@ class WechatCallback
 
 		$msgType = 'text';
 
-		$url = 'http://www.tuling123.com/openapi/api';
-
-		$appkey = 'db57fd447f1e949f061fdadba6a1ad4d';
-
-		$response = url_request($url, 'POST', array('key' => $appkey, 'info' => $keyword, 'loc' => '哈尔滨','userid' => $fromUsername));
-
-		$content = null;
-
-		if(!empty($response)){
-			$response = json_decode($response);
-			$content = $response->text;			
-		}
-
-		$content = empty($content) ? '你好！' : $content;
+		$content = '你好！';
 
 		$out = sprintf($template, $fromUsername, $toUsername, time(), $msgType, $content);
 
