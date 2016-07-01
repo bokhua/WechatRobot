@@ -13,7 +13,7 @@ class mod_currency
 		$fromUsername = $this->postObj->FromUserName;
 		$toUsername = $this->postObj->ToUserName;
 		$keyword = trim($postObj->Content);
-		
+
 		$pair = array('"CNYSGD"', '"SGDCNY"');
 
 		$content = $this->checkCurrency($pair);
@@ -52,7 +52,7 @@ class mod_currency
 		}else{
 			$rates = json_decode($response)->query->results->rate;
 			foreach ($rates as $rate) {
-				$result .= $rate->Name.': '.$rate->Rate.PHP_EOL;
+				$result .= $rate->Name.': '.$rate->Rate.PHP_EOL.'Ask: '.$rate->Ask.' Bid: '.$rate->Bid.PHP_EOL;
 			}
 		}
 		date_default_timezone_set('Asia/Singapore');
