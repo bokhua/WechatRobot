@@ -11,7 +11,7 @@ class mod_currency
 	function reply(){
 		
 		$fromUsername = $this->postObj->FromUserName;
-		$toUsername = $this->$postObj->ToUserName;
+		$toUsername = $this->postObj->ToUserName;
 
 		$pair = array('"CNYSGD"', '"SGDCNY"');
 
