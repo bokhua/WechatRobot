@@ -67,7 +67,7 @@ class WechatCallback
 
 		$appkey = 'db57fd447f1e949f061fdadba6a1ad4d';
 
-		$response = url_request($url, 'POST', array('key' => $appkey, 'info' => $keyword, 'userid' => $fromUsername));
+		$response = url_request($url, 'POST', array('key' => $appkey, 'info' => $keyword, 'loc' => '新加坡','userid' => $fromUsername));
 
 		$content = null;
 
