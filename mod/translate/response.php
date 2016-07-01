@@ -1,4 +1,5 @@
 <?php
+require_once(dir(__FILE__).'/lib.php');
 
 class mod_translate
 {
@@ -13,10 +14,16 @@ class mod_translate
 		$fromUsername = $this->postObj->FromUserName;
 		$toUsername = $this->postObj->ToUserName;
 		$keyword = trim($postObj->Content);
-		
 
+		$query = trim(get_request_param('translate', $keyword));
 
-		$content = '';
+		$en = translate($query, 'auto', 'en');
+		$zh = translate($query, 'auto', 'zh');
+
+		if($en['trans_result'][0]['src'] != $en['trans_result'][0]['dst'])
+			$content = $en['trans_result'][0]['dst'];
+		if($zh['trans_result'][0]['src'] != $zh['trans_result'][0]['dst'])
+			$content = $zh['trans_result'][0]['dst'];
 
     	$template = "<xml>
 			<ToUserName><![CDATA[%s]]></ToUserName>
