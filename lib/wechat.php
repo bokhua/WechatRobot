@@ -40,8 +40,8 @@ class WechatReponse{
 			}
 		}
 		return '<xml>
-				<ToUserName><![CDATA['.$fromUsername.']]></ToUserName>
-				<FromUserName><![CDATA['.$toUsername.']]></FromUserName>
+				<ToUserName><![CDATA['.$touser.']]></ToUserName>
+				<FromUserName><![CDATA['.$fromuser.']]></FromUserName>
 				<CreateTime>'.time().'</CreateTime>
 				<MsgType><![CDATA[news]]></MsgType>
 				<ArticleCount>'.$cnt.'</ArticleCount>
