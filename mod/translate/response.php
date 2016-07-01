@@ -11,7 +11,7 @@ class mod_translate
 	function reply(){
 		$fromUsername = $this->postObj->FromUserName;
 		$toUsername = $this->postObj->ToUserName;
-		$keyword = trim($postObj->Content);
+		$keyword = trim($this->postObj->Content);
 
 		$query = trim(get_request_param('translate', $keyword));
 
