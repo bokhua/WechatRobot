@@ -33,7 +33,7 @@ class WechatCallback
             	$modfile = $CFG->dirroot.'/mod/'.$modname.'/response.php';
             	$modclassname = 'mod_'.$modname;
 
-            	if(!empty($mod) && file_exists($modfile)){
+            	if(!empty($modname) && file_exists($modfile)){
             		$mod = new $modclassname($postObj);
             		$mod->reply();
             		exit;
@@ -42,7 +42,7 @@ class WechatCallback
             }
         }
 
-        $this->defaultReply($postObj, $modname.'|'.$modfile.'|'.$modclassname);
+        $this->defaultReply($postObj);
         exit;
     }
 
