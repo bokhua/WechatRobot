@@ -3,7 +3,6 @@
 define("TOKEN", "weixin");
 
 define('TOKEN_FILE', 'C:\public\http\wechat\refresh_token.txt');
-
 define('IP_FILE', 'C:\public\http\wechat\server_ip.txt');
 
 define('APP_ID', 'wxc55dd5bdfa4ae1f1');
@@ -25,5 +24,8 @@ $CFG->dbhost = '127.0.0.1';
 $CFG->dbport = '1433';
 $CFG->dbuser = '';
 $CFG->dbpass = '';
+
+$CFG->configfile = $CFG->dirroot.'/config.json';
+$CFG->settings = json_decode(file_get_contents($CFG->configfile));
 
 require_once(dirname(__FILE__) . '/lib/setup.php');

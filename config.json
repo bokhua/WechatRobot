@@ -1,0 +1,13 @@
+{
+  	"mods": 
+  	[
+	    {
+	    	"name": "currency",
+	      	"keywords":["currency", "汇率"]
+	    },
+	    {
+	      	"name": "translate",
+	      	"keywords":["translate", "翻译"]
+	    }
+  	]
+}

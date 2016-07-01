@@ -12,7 +12,8 @@ class mod_currency
 		
 		$fromUsername = $this->postObj->FromUserName;
 		$toUsername = $this->postObj->ToUserName;
-
+		$keyword = trim($postObj->Content);
+		
 		$pair = array('"CNYSGD"', '"SGDCNY"');
 
 		$content = $this->checkCurrency($pair);

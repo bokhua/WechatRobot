@@ -29,7 +29,7 @@ class WechatCallback
 
 			if(!empty( $keyword ))
             {
-            	$modname = $this->getModName($keyword);
+            	$modname = get_request_mod($keyword);
             	$modfile = $CFG->dirroot.'/mod/'.$modname.'/response.php';
             	$modclassname = 'mod_'.$modname;
 
@@ -70,14 +70,6 @@ class WechatCallback
 
 		echo $out; 
     }
-
-	private function getModName($keyword){
-		$modname = '';
-        if($keyword == '汇率' || strtolower($keyword) == 'currency'){
-    		$modname = 'currency';	
-    	}
-    	return $modname;
-	}
 
 	private function checkSignature()
 	{
