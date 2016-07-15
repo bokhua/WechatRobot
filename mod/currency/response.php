@@ -14,24 +14,22 @@ class mod_currency
 		$toUsername = $this->postObj->ToUserName;
 		$keyword = trim($postObj->Content);
 
-		$pairs = array('SGDCNY', 'CNYSGD', 'SGDJPY', 'JPYSGD');
+		$pair = array('"SGDCNY"', '"CNYSGD"', '"SGDJPY"', '"JPYSGD"');
 
-		$content = $this->checkCurrency($pairs);
+		$content = $this->checkCurrency($pair);
 
 		echo WechatReponse::renderText($fromUsername, $toUsername, $content);
 	}
 
-	private function checkCurrency($pairs = array()){
+	private function checkCurrency($pair = array()){
 		
 		$result = '';
 
-		if(count($pairs) == 0){
+		if(count($pair) == 0){
 			return 'invalid request.';
 		}
-		foreach ($pairs as $pair) {
-			$pair = '"'.$pair.'"';
-		}
-		$keyword = urlencode(implode(',', $pairs));
+
+		$keyword = urlencode(implode(',', $pair));
 		
 		$url = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20('.$keyword.')&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=';
 		
